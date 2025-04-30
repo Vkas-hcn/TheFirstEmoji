@@ -1,0 +1,21 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.TheFirstEmoji" parent="Theme.MaterialComponents.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/purple_700</item>
+        <!-- Status bar color. -->
+        <!-- Customize your theme here. -->
+    <!-- 可选：设置状态栏透明（全屏模式） -->
+    <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+    <style name="AppMain" parent="Theme.TheFirstEmoji">
+        <item name="android:statusBarColor">@color/purple_700</item>
+    </style>
+</resources>

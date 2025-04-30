@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="48dp"
+    android:layout_height="48dp"
+    android:layout_marginEnd="43dp"
+    android:layout_marginBottom="16dp">
+
+    <ImageView
+        android:id="@+id/img_mix_face"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"/>
+
+    <ImageView
+        android:id="@+id/img_mix_item_eye"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop" />
+
+    <ImageView
+        android:id="@+id/img_mix_item_mouth"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop" />
+
+    <ImageView
+        android:id="@+id/img_mix_item_hand"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop" />
+
+</FrameLayout>

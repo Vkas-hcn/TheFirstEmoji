@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+    <FrameLayout
+        android:id="@+id/fl_mix"
+        android:layout_width="48dp"
+        android:layout_height="48dp">
+        <ImageView
+            android:id="@+id/img_mix_face"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:background="@drawable/emoji_mixer_item_face_1"
+            android:scaleType="centerCrop"/>
+
+        <ImageView
+            android:id="@+id/img_mix_item_eye"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:id="@+id/img_mix_item_mouth"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:id="@+id/img_mix_item_hand"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop" />
+    </FrameLayout>
+
+</LinearLayout>
