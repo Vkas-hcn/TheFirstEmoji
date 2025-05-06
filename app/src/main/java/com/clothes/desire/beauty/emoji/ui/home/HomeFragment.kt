@@ -41,10 +41,10 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private var imageOneCreate = ""
     private var imageTwoCreate = ""
-    private var imageResult = ""
     var homeViewModel = HomeViewModel()
-    private var click1 =1
-    private var click2 =1
+    private var click1 = 1
+    private var click2 = 1
+
     companion object {
         private const val REQUEST_CODE_STORAGE_PERMISSION = 1001
     }
@@ -66,29 +66,34 @@ class HomeFragment : Fragment() {
     private fun setupRecyclerView() {
         val listData = AppData.getEmojiList(AppData.emoji1Json)
         adapter = MixAdapter(requireContext(), listData) { name ->
-            if (imageOneCreate.isEmpty()) {
-                imageOneCreate = name
-                click1 = binding?.clickInt!!
-                mixImage1()
-            } else {
-                if (imageTwoCreate.isEmpty()) {
-                    imageTwoCreate = name
-                    click2 = binding?.clickInt!!
-                    mixImage2()
-                    showMixDialog()
+            when {
+                imageOneCreate.isEmpty() -> {
+                    imageOneCreate = name
+                    click1 = binding?.clickInt ?: 0 // 使用安全调用操作符并提供默认值
+                    mixImage1()
                 }
+
+                imageTwoCreate.isEmpty() -> {
+                    imageTwoCreate = name
+                    click2 = binding?.clickInt ?: 0 // 使用安全调用操作符并提供默认值
+                    mixImage2()
+                }
+            }
+            if (imageOneCreate.isNotBlank() && imageTwoCreate.isNotBlank()) {
+                showMixDialog()
             }
         }
         binding.recyclerMix.layoutManager = GridLayoutManager(requireContext(), 4)
         binding.recyclerMix.adapter = adapter
     }
 
+
     //逗号字符串转换为list
     private fun stringToList(string: String): List<String> {
         return string.split(",")
     }
 
-    fun mixImage1() {
+    private fun mixImage1() {
         val oneList = stringToList(imageOneCreate)
         with(binding) {
             mix1Sate = true
@@ -147,7 +152,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    fun mixImage2() {
+    private fun mixImage2() {
         val oneList = stringToList(imageTwoCreate)
         with(binding) {
             mix2Sate = true
@@ -209,11 +214,17 @@ class HomeFragment : Fragment() {
 
 
     private fun showMixDialog() {
-        if(click1==1|| click2 ==1){
+        with(binding) {
+            imgMixFaceResult.setImageResource(0)
+            imgMixEyeResult.setImageResource(0)
+            imgMixMouthResult.setImageResource(0)
+            imgMixHandResult.setImageResource(0)
+        }
+        if (click1 == 1 || click2 == 1) {
             setImage1()
             return
         }
-        if((click1==2|| click1 ==3)&& (click2==2|| click2 ==3)){
+        if ((click1 == 2 || click1 == 3) && (click2 == 2 || click2 == 3)) {
             setImage3()
             return
         }
@@ -262,7 +273,7 @@ class HomeFragment : Fragment() {
                             "drawable",
                             requireActivity().packageName
                         )
-                    binding.imgMixMouthResult.setImageResource(resIdMouth)
+                    imgMixMouthResult.setImageResource(resIdMouth)
                 } else {
                     imgMixMouthResult.setImageResource(0)
                 }
@@ -276,7 +287,7 @@ class HomeFragment : Fragment() {
                             "drawable",
                             requireActivity().packageName
                         )
-                    binding.imgMixHandResult.setImageResource(resIdMouth)
+                    imgMixHandResult.setImageResource(resIdMouth)
                 } else {
                     imgMixHandResult.setImageResource(0)
                 }
@@ -304,6 +315,7 @@ class HomeFragment : Fragment() {
 
         }
     }
+
     private fun setImage3() {
         val oneList = stringToList(imageOneCreate)
         val twoList = stringToList(imageTwoCreate)
@@ -355,13 +367,10 @@ class HomeFragment : Fragment() {
                 checkItemEmoji(7)
             }
             imgRef.setOnClickListener {
-                imageOneCreate = ""
-                imageTwoCreate = ""
-                mix1Sate = false
-                mix2Sate = false
+                cleckMix()
             }
             imgXx.setOnClickListener {
-                llMixDialog.isVisible = false
+                cloneDialog()
             }
             llMixDialog.setOnClickListener {
 
@@ -378,7 +387,27 @@ class HomeFragment : Fragment() {
                 bitmap.let { it1 -> homeViewModel.shareImage(requireContext(), it1) }
 
             }
+            img1.setOnClickListener {
+                imageOneCreate = ""
+                binding.mix1Sate = false
+            }
+            imgK2.setOnClickListener {
+                imageTwoCreate = ""
+                binding.mix2Sate = false
+            }
         }
+    }
+
+    private fun cleckMix() {
+        imageOneCreate = ""
+        imageTwoCreate = ""
+        binding.mix1Sate = false
+        binding.mix2Sate = false
+    }
+
+    fun cloneDialog() {
+        cleckMix()
+        binding.llMixDialog.isVisible = false
     }
 
     private fun checkItemEmoji(state: Int) {
@@ -403,12 +432,10 @@ class HomeFragment : Fragment() {
                 requireContext(),
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
             ) == PackageManager.PERMISSION_GRANTED -> {
-                // 权限已授予，直接下载
                 downloadWallpaper()
             }
 
             shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE) -> {
-                // 用户之前拒绝过权限请求，显示解释对话框
                 showPermissionDeniedDialog()
             }
 
@@ -423,13 +450,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun downloadWallpaper() {
-        // 获取需要保存的布局视图
-        val view =    if((click1==2|| click1 ==3)&& (click2==2|| click2 ==3)){
+        val view = if ((click1 == 2 || click1 == 3) && (click2 == 2 || click2 == 3)) {
             binding.conFood
-        }else{
+        } else {
             binding.flMixResult
         }
-        // 创建与布局尺寸相同的 Bitmap
         val bitmap = createBitmap(view.width, view.height).apply {
             val canvas = Canvas(this)
             view.draw(canvas)
@@ -459,7 +484,7 @@ class HomeFragment : Fragment() {
                         Toast.LENGTH_SHORT
                     )
                         .show()
-                    binding.llMixDialog.isVisible = false
+                    cloneDialog()
                 }
             }
         } catch (e: Exception) {
@@ -468,7 +493,7 @@ class HomeFragment : Fragment() {
             imageUri?.let { uri ->
                 resolver.delete(uri, null, null)
             }
-            binding.llMixDialog.isVisible = false
+            cloneDialog()
         }
 
     }

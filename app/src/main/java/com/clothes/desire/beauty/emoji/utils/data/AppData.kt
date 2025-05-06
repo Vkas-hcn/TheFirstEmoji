@@ -1,5 +1,6 @@
 package com.clothes.desire.beauty.emoji.utils.data
 
+import androidx.annotation.Keep
 import com.clothes.desire.beauty.emoji.R
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -208,7 +209,6 @@ object AppData {
             "emoji_mixer_item_face_1",
             "emoji_mixer_item_face_1",
             
-            
             "emoji_mixer_item_face_2",
             "emoji_mixer_item_face_3",
             "emoji_mixer_item_face_4",
@@ -222,7 +222,7 @@ object AppData {
             "emoji_mixer_item_face_6",
             "emoji_mixer_item_face_6",
             "emoji_mixer_item_face_2",
-            "emoji_mixer_item_face_3",
+            "emoji_mixer_item_face_3"
             ],
             "eye": [
             "emoji_mixer_item_eye_1",
@@ -273,7 +273,7 @@ object AppData {
             "emoji_mixer_item_eye_15",
             "emoji_mixer_item_eye_16",
             "emoji_mixer_item_eye_17",
-            "emoji_mixer_item_eye_18",
+            "emoji_mixer_item_eye_18"
             ],
             "mouth": [
             "emoji_mixer_item_mouth_1",
@@ -324,7 +324,7 @@ object AppData {
             "emoji_mixer_item_mouth_29",
             "emoji_mixer_item_mouth_20",
             "emoji_mixer_item_mouth_21",
-            "emoji_mixer_item_mouth_22",
+            "emoji_mixer_item_mouth_22"
             ],
             "hand": [
             "",
@@ -375,7 +375,7 @@ object AppData {
             "emoji_mixer_item_hand_9",
             "emoji_mixer_item_hand_10",
             "emoji_mixer_item_hand_11",
-            "emoji_mixer_item_hand_12",
+            "emoji_mixer_item_hand_12"
             ]
         }
     """.trimIndent()

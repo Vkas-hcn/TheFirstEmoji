@@ -23,6 +23,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
+import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -110,17 +111,27 @@ class DownloadFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCa
         selectedImageResId= data.getOrNull(0)?:0
         isBatchDownload = true
         iconDown = data
-        showImageIcon()
+        showImageIcon(true)
     }
-    private fun showImageIcon(){
-        binding.imgDownRe.setImageResource(selectedImageResId)
-        binding.llDownDialog.isVisible = true
+    private fun showImageIcon(isALl:Boolean){
+        with(binding){
+            if(isALl){
+                tvDownTips.isVisible = true
+                imgDownRe.isInvisible = true
+            }else{
+                binding.imgDownRe.setImageResource(selectedImageResId)
+                tvDownTips.isVisible = false
+                imgDownRe.isVisible = true
+            }
+            binding.llDownDialog.isVisible = true
+        }
+
     }
 
     private fun clickItemDown(data:Int ){
         selectedImageResId = data
         isBatchDownload = false
-        showImageIcon()
+        showImageIcon(false)
     }
 
 

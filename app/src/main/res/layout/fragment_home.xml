@@ -77,32 +77,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/emoji_mixer_item_face_2" />
+                android:scaleType="centerCrop"/>
 
             <ImageView
                 android:id="@+id/img_mix_eye_1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/emoji_mixer_item_eye_4" />
+                android:scaleType="centerCrop" />
 
             <ImageView
                 android:id="@+id/img_mix_mouth_1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/emoji_mixer_item_mouth_1" />
+                android:scaleType="centerCrop" />
 
             <ImageView
                 android:id="@+id/img_mix_hand_1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/emoji_mixer_item_hand_3" />
+                android:scaleType="centerCrop" />
         </FrameLayout>
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -110,13 +106,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/icon_add"
-            app:layout_constraintBottom_toBottomOf="@+id/img_2"
-            app:layout_constraintEnd_toStartOf="@+id/img_2"
+            app:layout_constraintBottom_toBottomOf="@+id/img_k_2"
+            app:layout_constraintEnd_toStartOf="@+id/img_k_2"
             app:layout_constraintStart_toEndOf="@+id/img_1"
-            app:layout_constraintTop_toTopOf="@+id/img_2" />
+            app:layout_constraintTop_toTopOf="@+id/img_k_2" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/img_2"
+            android:id="@+id/img_k_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="72dp"
@@ -132,20 +128,20 @@
             android:src="@mipmap/emoji_mixer_item_out_two"
 
             android:visibility="@{mix2Sate?View.INVISIBLE:View.VISIBLE}"
-            app:layout_constraintBottom_toBottomOf="@+id/img_2"
-            app:layout_constraintEnd_toEndOf="@+id/img_2"
-            app:layout_constraintStart_toStartOf="@+id/img_2"
-            app:layout_constraintTop_toTopOf="@+id/img_2" />
+            app:layout_constraintBottom_toBottomOf="@+id/img_k_2"
+            app:layout_constraintEnd_toEndOf="@+id/img_k_2"
+            app:layout_constraintStart_toStartOf="@+id/img_k_2"
+            app:layout_constraintTop_toTopOf="@+id/img_k_2" />
 
         <FrameLayout
             android:id="@+id/fl_mix_2"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:visibility="@{mix2Sate?View.VISIBLE:View.INVISIBLE}"
-            app:layout_constraintBottom_toBottomOf="@+id/img_2"
-            app:layout_constraintEnd_toEndOf="@+id/img_2"
-            app:layout_constraintStart_toStartOf="@+id/img_2"
-            app:layout_constraintTop_toTopOf="@+id/img_2">
+            app:layout_constraintBottom_toBottomOf="@+id/img_k_2"
+            app:layout_constraintEnd_toEndOf="@+id/img_k_2"
+            app:layout_constraintStart_toStartOf="@+id/img_k_2"
+            app:layout_constraintTop_toTopOf="@+id/img_k_2">
 
             <ImageView
                 android:id="@+id/img_mix_face_2"
