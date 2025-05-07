@@ -44,7 +44,7 @@ class SettingFragment : Fragment() {
         }
         binding.tvPp.setOnClickListener {
             val intent = Intent(Intent .ACTION_VIEW)
-            intent.data = Uri.parse("https://play.google.com")
+            intent.data = Uri.parse("https://sites.google.com/view/emojoy/home")
             startActivity(intent)
         }
         return root
